@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meat_deliviry_app/screens/auth_screen/login_screen.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 import 'package:meat_deliviry_app/design_widget/app_logo.dart';
+import 'package:meat_deliviry_app/screens/home_screen/home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +18,13 @@ class _SplashScreenState extends State<SplashScreen> {
   changeScreen() {
     Future.delayed(const Duration(seconds: 3), () {
       // using getx
-      Get.to(() => const MyLogin());
+      auth.authStateChanges().listen((User? user) {
+        if (user == null && mounted) {
+          Get.to(() => const MyLogin());
+        } else {
+          Get.to(() => const Home());
+        }
+      });
     });
   }
 
