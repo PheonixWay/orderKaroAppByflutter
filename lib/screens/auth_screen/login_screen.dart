@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 import 'package:meat_deliviry_app/consts/list.dart';
+import 'package:meat_deliviry_app/controler/auth_controller.dart';
 import 'package:meat_deliviry_app/design_widget/app_logo.dart';
 import 'package:meat_deliviry_app/design_widget/bg_widget.dart';
 import 'package:meat_deliviry_app/design_widget/button_design.dart';
@@ -14,6 +15,10 @@ class MyLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controllerforLogin = Get.put(AuthController());
+
+    //
+
     return bgWidget(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -27,8 +32,16 @@ class MyLogin extends StatelessWidget {
               20.heightBox,
               SingleChildScrollView(
                 child: Column(children: [
-                  customTextField(title: emial, hint: emailHint),
-                  customTextField(title: password, hint: passwordHint),
+                  customTextField(
+                      title: emial,
+                      hint: emailHint,
+                      ispass: false,
+                      controller: controllerforLogin.emailController),
+                  customTextField(
+                      title: password,
+                      hint: passwordHint,
+                      ispass: true,
+                      controller: controllerforLogin.passController),
                   Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -36,8 +49,16 @@ class MyLogin extends StatelessWidget {
                   5.heightBox,
                   ourButton(
                           textcolor: whiteColor,
-                          onPress: () {
-                            Get.to(() => const Home());
+                          onPress: () async {
+                            if (controllerforLogin.emailController == null) {}
+                            await controllerforLogin
+                                .loginMethod(context: context)
+                                .then((value) {
+                              if (value != null) {
+                                VxToast.show(context, msg: loggedin);
+                                Get.offAll(() => const Home());
+                              }
+                            });
                           },
                           color: redColor,
                           data: login)

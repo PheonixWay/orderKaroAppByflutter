@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:meat_deliviry_app/consts/consts.dart';
 import 'package:meat_deliviry_app/consts/list.dart';
+import 'package:meat_deliviry_app/controler/auth_controller.dart';
 
 import 'package:meat_deliviry_app/design_widget/bg_widget_2.dart';
 import 'package:meat_deliviry_app/screens/account_screen/component_of_account_screen.dart';
+import 'package:meat_deliviry_app/screens/auth_screen/login_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return bgWidget2(
@@ -48,7 +53,11 @@ class AccountScreen extends StatelessWidget {
                   OutlinedButton(
                       style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: whiteColor)),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Get.put(AuthController())
+                            .signoutMethod(context: context);
+                        Get.offAll(() => const MyLogin());
+                      },
                       child: logout.text.white.fontFamily(semibold).make())
                 ],
               ),

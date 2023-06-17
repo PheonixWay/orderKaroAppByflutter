@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1061897527385",
+    "project_id": "order-karo-d2967",
+    "storage_bucket": "order-karo-d2967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061897527385:android:ec7dd33e75c625be259148",
+        "android_client_info": {
+          "package_name": "com.example.meat_deliviry_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061897527385-bbfacvs7h4vgnckff7c7fntpf4tfoig1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meat_deliviry_app",
+            "certificate_hash": "f0f9db83f20a50e7a6de76aebdb3e8783fdf0561"
+          }
+        },
+        {
+          "client_id": "1061897527385-lhpj40238h8f5hfgq6eu1v8ih2039m4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5QDHwH56U42AiUvWJduasYtf-0RM-QA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061897527385-lhpj40238h8f5hfgq6eu1v8ih2039m4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

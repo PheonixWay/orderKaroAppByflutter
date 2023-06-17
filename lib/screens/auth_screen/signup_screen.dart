@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
+import 'package:meat_deliviry_app/controler/auth_controller.dart';
 import 'package:meat_deliviry_app/design_widget/app_logo.dart';
 import 'package:meat_deliviry_app/design_widget/bg_widget.dart';
 import 'package:meat_deliviry_app/design_widget/button_design.dart';
 import 'package:meat_deliviry_app/design_widget/custom_text_input.dart';
+import 'package:meat_deliviry_app/screens/home_screen/home.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -14,6 +16,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  var controller = Get.put(AuthController());
+
+  //text controllers
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passController = TextEditingController();
+  var repassController = TextEditingController();
+
+  //var for checkbox
   bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -30,10 +41,26 @@ class _SignUpState extends State<SignUp> {
               20.heightBox,
               SingleChildScrollView(
                 child: Column(children: [
-                  customTextField(title: name, hint: nameHint),
-                  customTextField(title: emial, hint: emailHint),
-                  customTextField(title: password, hint: passwordHint),
-                  customTextField(title: retypePass, hint: passwordHint),
+                  customTextField(
+                      title: name,
+                      hint: nameHint,
+                      controller: nameController,
+                      ispass: false),
+                  customTextField(
+                      title: emial,
+                      hint: emailHint,
+                      controller: emailController,
+                      ispass: false),
+                  customTextField(
+                      title: password,
+                      hint: passwordHint,
+                      controller: passController,
+                      ispass: true),
+                  customTextField(
+                      title: retypePass,
+                      hint: passwordHint,
+                      controller: repassController,
+                      ispass: true),
                   5.heightBox,
                   Row(
                     children: [
@@ -72,7 +99,32 @@ class _SignUpState extends State<SignUp> {
                   ),
                   ourButton(
                           textcolor: isChecked == true ? whiteColor : fontGrey,
-                          onPress: () {},
+                          onPress: () async {
+                            //checking condition wheter checkbox is cheked or not
+                            if (isChecked != false) {
+                              try {
+                                //using method to create user
+                                await controller
+                                    .signupMethod(
+                                        context: context,
+                                        email: emailController.text,
+                                        password: repassController.text)
+                                    .then((value) {
+                                  //then after completing user creation then perform storeuser data to save user data
+                                  return controller.storeUserData(
+                                      name: nameController.text,
+                                      email: emailController.text,
+                                      password: repassController.text);
+                                }).then((value) {
+                                  VxToast.show(context, msg: loggedin);
+                                  Get.offAll(const Home());
+                                });
+                              } catch (e) {
+                                controller.signoutMethod();
+                                VxToast.show(context, msg: e.toString());
+                              }
+                            }
+                          },
                           color: isChecked == true ? redColor : lightgolden,
                           data: signup)
                       .box

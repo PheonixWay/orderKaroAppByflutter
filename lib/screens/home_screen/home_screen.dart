@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             5.heightBox,
+            //first swiper
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -54,6 +55,7 @@ class HomeScreen extends StatelessWidget {
                         }),
 
                     20.heightBox,
+                    //two buttons top choice and top
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: List.generate(
@@ -62,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                             height: context.screenHeight * 0.15,
                             width: context.screenWidth / 2.5,
                             icon: index == 0 ? icTodaysDeal : icFlashDeal,
-                            titles: index == 0 ? todaydeal : flashsale),
+                            titles: index == 0 ? topChoice : budgetMeat),
                       ),
                     ),
                     //second slider
