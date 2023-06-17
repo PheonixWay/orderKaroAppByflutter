@@ -66,3 +66,7 @@ const myorder = "Your orders";
 const mywishlist = "My Wishlist";
 const myorders = "My Orders";
 const messages = "Messages";
+
+const change = "Change";
+const editprofile = "Editing Profile";
+const save = "Save";
