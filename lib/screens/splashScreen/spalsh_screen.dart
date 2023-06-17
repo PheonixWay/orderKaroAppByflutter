@@ -16,7 +16,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 // creating a method to change screen from splash screen to login and signup
   changeScreen() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       // using getx
       auth.authStateChanges().listen((User? user) {
         if (user == null && mounted) {
@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
             appversion.text.white.make(),
             const Spacer(),
             credits.text.white.fontFamily(semibold).make(),
-            20.heightBox,
+            10.heightBox,
             // our splah screen ui is completed
           ],
         ),
