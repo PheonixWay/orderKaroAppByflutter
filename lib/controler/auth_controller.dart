@@ -7,6 +7,7 @@ import 'package:meat_deliviry_app/consts/consts.dart';
 class AuthController extends GetxController {
   var emailController = TextEditingController();
   var passController = TextEditingController();
+  var isloading = false.obs;
 
   Future<UserCredential?> loginMethod({context}) async {
     UserCredential? userCredential;

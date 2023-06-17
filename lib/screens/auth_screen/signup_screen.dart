@@ -97,39 +97,50 @@ class _SignUpState extends State<SignUp> {
                       )
                     ],
                   ),
-                  ourButton(
-                          textcolor: isChecked == true ? whiteColor : fontGrey,
-                          onPress: () async {
-                            //checking condition wheter checkbox is cheked or not
-                            if (isChecked != false) {
-                              try {
-                                //using method to create user
-                                await controller
-                                    .signupMethod(
-                                        context: context,
-                                        email: emailController.text,
-                                        password: repassController.text)
-                                    .then((value) {
-                                  //then after completing user creation then perform storeuser data to save user data
-                                  return controller.storeUserData(
-                                      name: nameController.text,
-                                      email: emailController.text,
-                                      password: repassController.text);
-                                }).then((value) {
-                                  VxToast.show(context, msg: loggedin);
-                                  Get.offAll(const Home());
-                                });
-                              } catch (e) {
-                                controller.signoutMethod();
-                                VxToast.show(context, msg: e.toString());
-                              }
-                            }
-                          },
-                          color: isChecked == true ? redColor : lightgolden,
-                          data: signup)
-                      .box
-                      .width(context.screenWidth - 50)
-                      .make(),
+                  Obx(
+                    () => controller.isloading.value
+                        ? const CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(redColor),
+                          )
+                        : ourButton(
+                                textcolor:
+                                    isChecked == true ? whiteColor : fontGrey,
+                                onPress: () async {
+                                  //checking condition wheter checkbox is cheked or not
+                                  if (isChecked != false) {
+                                    controller.isloading(true);
+                                    try {
+                                      //using method to create user
+                                      await controller
+                                          .signupMethod(
+                                              context: context,
+                                              email: emailController.text,
+                                              password: repassController.text)
+                                          .then((value) {
+                                        //then after completing user creation then perform storeuser data to save user data
+                                        return controller.storeUserData(
+                                            name: nameController.text,
+                                            email: emailController.text,
+                                            password: repassController.text);
+                                      }).then((value) {
+                                        VxToast.show(context, msg: loggedin);
+                                        Get.offAll(const Home());
+                                      });
+                                    } catch (e) {
+                                      controller.isloading(false);
+                                      controller.signoutMethod();
+
+                                      VxToast.show(context, msg: e.toString());
+                                    }
+                                  }
+                                },
+                                color:
+                                    isChecked == true ? redColor : lightgolden,
+                                data: signup)
+                            .box
+                            .width(context.screenWidth - 50)
+                            .make(),
+                  ),
                   10.heightBox,
                   //usng velocity x i am applying gesture detector
                   Row(

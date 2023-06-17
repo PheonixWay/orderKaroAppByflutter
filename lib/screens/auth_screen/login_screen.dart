@@ -47,24 +47,32 @@ class MyLogin extends StatelessWidget {
                       child: TextButton(
                           onPressed: () {}, child: forgotPass.text.make())),
                   5.heightBox,
-                  ourButton(
-                          textcolor: whiteColor,
-                          onPress: () async {
-                            if (controllerforLogin.emailController == null) {}
-                            await controllerforLogin
-                                .loginMethod(context: context)
-                                .then((value) {
-                              if (value != null) {
-                                VxToast.show(context, msg: loggedin);
-                                Get.offAll(() => const Home());
-                              }
-                            });
-                          },
-                          color: redColor,
-                          data: login)
-                      .box
-                      .width(context.screenWidth - 50)
-                      .make(),
+                  Obx(
+                    () => controllerforLogin.isloading.value
+                        ? const CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(redColor),
+                          )
+                        : ourButton(
+                                textcolor: whiteColor,
+                                onPress: () async {
+                                  controllerforLogin.isloading(true);
+                                  await controllerforLogin
+                                      .loginMethod(context: context)
+                                      .then((value) {
+                                    if (value != null) {
+                                      VxToast.show(context, msg: loggedin);
+                                      Get.offAll(() => const Home());
+                                    } else {
+                                      controllerforLogin.isloading(false);
+                                    }
+                                  });
+                                },
+                                color: redColor,
+                                data: login)
+                            .box
+                            .width(context.screenWidth - 50)
+                            .make(),
+                  ),
                   5.heightBox,
                   createNewAccount.text.color(fontGrey).make(),
                   5.heightBox,
