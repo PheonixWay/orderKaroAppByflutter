@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 import 'package:meat_deliviry_app/consts/list.dart';
 import 'package:meat_deliviry_app/controler/auth_controller.dart';
+import 'package:meat_deliviry_app/controler/profile_controller.dart';
 
 import 'package:meat_deliviry_app/design_widget/bg_widget_2.dart';
 import 'package:meat_deliviry_app/screens/account_screen/component_of_account_screen.dart';
@@ -15,6 +16,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProfileController());
     return bgWidget2(
         child: Scaffold(
       body: SafeArea(
