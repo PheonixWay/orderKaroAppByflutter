@@ -45,6 +45,8 @@ class AccountScreen extends StatelessWidget {
                           alignment: Alignment.topRight,
                           child: InkWell(
                             onTap: () {
+                              controller.nameController.text = data['name'];
+                              controller.passController.text = data['password'];
                               Get.to(() => EditProfile(
                                     data: data,
                                   ));
@@ -58,11 +60,19 @@ class AccountScreen extends StatelessWidget {
                         //profile image name and email and logout button
                         Row(
                           children: [
-                            Image.asset(
-                              imgProfile2,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ).box.roundedFull.clip(Clip.antiAlias).make(),
+                            data['imageUrl'] == ''
+                                ? Image.asset(
+                                    imgProfile2,
+                                    width: 100,
+                                    height: 85,
+                                    fit: BoxFit.cover,
+                                  ).box.roundedFull.clip(Clip.antiAlias).make()
+                                : Image.network(
+                                    data["imageUrl"],
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                    height: 85,
+                                  ).box.roundedFull.clip(Clip.antiAlias).make(),
                             8.widthBox,
                             Expanded(
                               child: Column(

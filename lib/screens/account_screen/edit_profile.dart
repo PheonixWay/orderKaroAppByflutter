@@ -16,8 +16,6 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
-    controller.nameController.text = data['name'];
-    controller.passController.text = data['password'];
 
     return bgWidget(
         child: Scaffold(
@@ -29,19 +27,29 @@ class EditProfile extends StatelessWidget {
         () => Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            controller.profileImagepath.isEmpty
+            //if both are empty so show default image
+            controller.profileImagepath.isEmpty && data['imageUrl'] == ''
                 ? Image.asset(
                     imgProfile2,
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,
                   ).box.roundedFull.clip(Clip.antiAlias).make()
-                : Image.file(
-                    File(controller.profileImagepath.value),
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ).box.roundedFull.clip(Clip.antiAlias).make(),
+                : //if only selected image is empty but have network image then show network image
+                data['imageUrl'] != '' && controller.profileImagepath.isEmpty
+                    ? Image.network(
+                        data['imageUrl'],
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ).box.roundedFull.clip(Clip.antiAlias).make()
+                    : //if selected image is not empty then this
+                    Image.file(
+                        File(controller.profileImagepath.value),
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ).box.roundedFull.clip(Clip.antiAlias).make(),
             5.heightBox,
             ourButton(
                 onPress: () {
@@ -62,14 +70,24 @@ class EditProfile extends StatelessWidget {
                 ispass: true,
                 controller: controller.passController),
             15.heightBox,
-            ourButton(
+            controller.isloading.value == true
+                ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(redColor),
+                  )
+                : ourButton(
                     data: save,
                     color: redColor,
                     textcolor: whiteColor,
-                    onPress: () {})
-                .box
-                .width(context.screenWidth - 40)
-                .make(),
+                    onPress: () async {
+                      controller.isloading(true);
+                      await controller.uploadProfileImage();
+                      await controller.updateProfile(
+                          name: controller.nameController.text,
+                          password: controller.passController.text,
+                          imageUrl: controller.profileImageLink);
+                      // ignore: use_build_context_synchronously
+                      VxToast.show(context, msg: "Updated");
+                    }).box.width(context.screenWidth - 40).make(),
           ],
         )
             .box
