@@ -10,11 +10,15 @@ import 'package:meat_deliviry_app/design_widget/custom_text_input.dart';
 import '../../consts/consts.dart';
 
 class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+  final dynamic data;
+  const EditProfile({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
+    controller.nameController.text = data['name'];
+    controller.passController.text = data['password'];
+
     return bgWidget(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
@@ -47,8 +51,16 @@ class EditProfile extends StatelessWidget {
                 textcolor: whiteColor,
                 data: change),
             20.heightBox,
-            customTextField(title: name, hint: nameHint, ispass: false),
-            customTextField(title: password, hint: passwordHint, ispass: true),
+            customTextField(
+                title: name,
+                hint: nameHint,
+                ispass: false,
+                controller: controller.nameController),
+            customTextField(
+                title: password,
+                hint: passwordHint,
+                ispass: true,
+                controller: controller.passController),
             15.heightBox,
             ourButton(
                     data: save,
