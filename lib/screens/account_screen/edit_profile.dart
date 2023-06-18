@@ -29,11 +29,13 @@ class EditProfile extends StatelessWidget {
                 ? Image.asset(
                     imgProfile2,
                     width: 100,
+                    height: 100,
                     fit: BoxFit.cover,
                   ).box.roundedFull.clip(Clip.antiAlias).make()
                 : Image.file(
                     File(controller.profileImagepath.value),
                     width: 100,
+                    height: 100,
                     fit: BoxFit.cover,
                   ).box.roundedFull.clip(Clip.antiAlias).make(),
             5.heightBox,
