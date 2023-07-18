@@ -3,7 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-User? currentUser = auth.currentUser;
+User? currentuser = auth.currentUser;
 
 //collection
 const userCollection = "users";
+const productCollection = "products";
+const cartCollection = "cart";
+const orderCollection = "order";
+const addressCollection = "Address";

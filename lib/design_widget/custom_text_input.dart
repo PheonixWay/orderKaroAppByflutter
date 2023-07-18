@@ -10,6 +10,13 @@ Widget customTextField({String? title, String? hint, controller, ispass}) {
       TextFormField(
         obscureText: ispass,
         controller: controller,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "*Required";
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
             hintStyle: const TextStyle(
               fontFamily: semibold,
@@ -17,7 +24,7 @@ Widget customTextField({String? title, String? hint, controller, ispass}) {
             ),
             hintText: hint,
             isDense: true,
-            fillColor: lightGrey,
+            fillColor: whiteColor,
             filled: true,
             border: InputBorder.none,
             focusedBorder: const OutlineInputBorder(

@@ -85,12 +85,13 @@ class EditProfile extends StatelessWidget {
                     textcolor: whiteColor,
                     onPress: () async {
                       controller.isloading(true);
-                      if(controller.profileImagepath.value.isNotEmpty){
+                      if (controller.profileImagepath.value.isNotEmpty) {
                         await controller.uploadProfileImage();
-                      }else{
-                        controller.profileImageLink=data['imageUrl'];
+                      } else {
+                        controller.profileImageLink = data['imageUrl'];
                       }
-                      if(data['password']==controller.oldpassController.text){
+                      if (data['password'] ==
+                          controller.oldpassController.text) {
                         // controller.changeAuthPassword(email: data['email'],password: controller.oldpassController.text,newPassword: controller.newpassController.text);
                         await controller.updateProfile(
                             name: controller.nameController.text,
@@ -98,14 +99,11 @@ class EditProfile extends StatelessWidget {
                             imageUrl: controller.profileImageLink);
                         // ignore: use_build_context_synchronously
                         VxToast.show(context, msg: "Updated");
-                      }else{
+                      } else {
                         // ignore: use_build_context_synchronously
                         VxToast.show(context, msg: oldPasswrong);
                         controller.isloading(false);
                       }
-
-
-
                     }).box.width(context.screenWidth - 40).make(),
           ],
         )

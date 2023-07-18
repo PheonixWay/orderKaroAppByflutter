@@ -9,6 +9,7 @@ import 'package:meat_deliviry_app/design_widget/button_design.dart';
 import 'package:meat_deliviry_app/design_widget/custom_text_input.dart';
 import 'package:meat_deliviry_app/screens/auth_screen/signup_screen.dart';
 import 'package:meat_deliviry_app/screens/home_screen/home.dart';
+import 'package:meat_deliviry_app/services/firestore_services.dart';
 
 class MyLogin extends StatelessWidget {
   const MyLogin({super.key});
@@ -60,7 +61,7 @@ class MyLogin extends StatelessWidget {
                                       .loginMethod(context: context)
                                       .then((value) {
                                     if (value != null) {
-                                      VxToast.show(context, msg: loggedin);
+                                      FirestoreServices.getUserName();
                                       Get.offAll(() => const Home());
                                     } else {
                                       controllerforLogin.isloading(false);
@@ -103,7 +104,7 @@ class MyLogin extends StatelessWidget {
                                   width: 35,
                                 ),
                               ),
-                            )),
+                            ).onTap(() {})),
                   ),
                 ])
                     .box

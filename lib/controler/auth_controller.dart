@@ -34,14 +34,15 @@ class AuthController extends GetxController {
   //stroing data method
 
   storeUserData({name, email, password}) async {
-    DocumentReference store =
-        firestore.collection(userCollection).doc(currentUser!.uid);
+    var auth1 = FirebaseAuth.instance;
+    var uid = auth1.currentUser!.uid;
+    DocumentReference store = firestore.collection(userCollection).doc(uid);
     store.set({
       'name': name,
       'password': password,
       'email': email,
       'imageUrl': '',
-      "id": currentUser!.uid,
+      "id": currentuser!.uid.toString(),
       "cart_count": "00",
       "wislist_count": "00",
       "order_count": "00"
@@ -51,7 +52,8 @@ class AuthController extends GetxController {
   //signout method
   signoutMethod({context}) async {
     try {
-      auth.signOut();
+      var user = FirebaseAuth.instance;
+      user.signOut();
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }

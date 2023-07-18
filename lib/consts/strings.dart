@@ -28,6 +28,7 @@ const termandCondi = "Terms and Conditions";
 const home = "Home";
 const categories = "Categories";
 const cart = "Cart";
+const address = "Addresses";
 const account = "Account";
 
 const searchanything = "Search anything...";
@@ -57,6 +58,7 @@ const cellphone = "Cellphone & Tab";
 const furniture = "Furniture";
 
 const cartisEmpty = "Cart is Empty!";
+const addressisEmpty = "Address is Empty!";
 const profilename = "Katrina Kaif";
 const profilemail = "katrinakaif@gmail.com";
 const cartcount = "00";
@@ -73,3 +75,7 @@ const messages = "Messages";
 const change = "Change";
 const editprofile = "Editing Profile";
 const save = "Save";
+
+const upi = "(GPay,PhonePe,Paytm etc)";
+
+const cod1 = "Cash on Delivery";

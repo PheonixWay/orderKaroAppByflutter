@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 
 const socialIconList = {icFacebookLogo, icGoogleLogo, icTwitterLogo};
@@ -32,12 +33,15 @@ const categoriesImages = {
   imgFc8,
   imgFc9
 };
-const profilebuttonlist = {myorders, mywishlist, messages, categories, cart};
+const profilebuttonlist = {myorders, mywishlist, messages, categories, address};
 
 const profilebuttonicon = {
   icOrders,
   icOrder,
   icMessages,
   icCategories2,
-  icCart2
+  icAddress,
+  // Icon(Icons.add_home),
 };
+const paymentModeimg = {imgUpi, imgCod1};
+const paymentMode = {upi, cod1};

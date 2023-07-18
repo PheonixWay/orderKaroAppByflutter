@@ -1,0 +1,121 @@
+{
+    "categories": [
+        {
+            "name": "women Dress",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Men Clothing & Fashion",
+            "subCategory": [
+                "women Dress",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Computer & Accessories",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "women Dress",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Automobile",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "women Dress",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Kid & Toys",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "women Dress",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Sports",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "women Dress",
+                "Jewelery",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Jewelery",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "women Dress",
+                "Celphone & Tab",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Cellphone & Tab",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "women Dress",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Furniture",
+            "subCategory": [
+                "Men Clothing & Fashion",
+                "Computer & Accessories",
+                "Automobile",
+                "kid & Toys",
+                "Sports",
+                "Jewelery",
+                "Celphone & Tab",
+                "women Dress"
+            ]
+        }
+    ]
+}

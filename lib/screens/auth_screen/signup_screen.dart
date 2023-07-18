@@ -7,6 +7,7 @@ import 'package:meat_deliviry_app/design_widget/bg_widget.dart';
 import 'package:meat_deliviry_app/design_widget/button_design.dart';
 import 'package:meat_deliviry_app/design_widget/custom_text_input.dart';
 import 'package:meat_deliviry_app/screens/home_screen/home.dart';
+import 'package:meat_deliviry_app/services/firestore_services.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -124,7 +125,9 @@ class _SignUpState extends State<SignUp> {
                                             password: repassController.text);
                                       }).then((value) {
                                         VxToast.show(context, msg: loggedin);
+
                                         Get.offAll(const Home());
+                                        FirestoreServices.getUserName();
                                       });
                                     } catch (e) {
                                       controller.isloading(false);

@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:meat_deliviry_app/consts/consts.dart';
 import 'package:meat_deliviry_app/consts/list.dart';
 import 'package:meat_deliviry_app/controler/auth_controller.dart';
 import 'package:meat_deliviry_app/controler/profile_controller.dart';
-
 import 'package:meat_deliviry_app/design_widget/bg_widget_2.dart';
+import 'package:meat_deliviry_app/screens/Address_screen/address_screen.dart';
 import 'package:meat_deliviry_app/screens/account_screen/component_of_account_screen.dart';
 import 'package:meat_deliviry_app/screens/account_screen/edit_profile.dart';
 import 'package:meat_deliviry_app/screens/auth_screen/login_screen.dart';
+
+import 'package:meat_deliviry_app/screens/order_screen/order_screen.dart';
 import 'package:meat_deliviry_app/services/firestore_services.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -18,12 +19,13 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     var controller = Get.put(ProfileController());
 
     return bgWidget2(
       child: Scaffold(
         body: StreamBuilder(
-            stream: FirestoreServices.getUser(currentUser!.uid),
+            stream: FirestoreServices.getUser(FirestoreServices.getUserUid()),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
@@ -45,7 +47,7 @@ class AccountScreen extends StatelessWidget {
                           alignment: Alignment.topRight,
                           child: InkWell(
                             onTap: () {
-                              controller.nameController.text = data['name'];
+                              // controller.nameController.text = data['name'];
                               Get.to(() => EditProfile(
                                     data: data,
                                   ));
@@ -56,6 +58,7 @@ class AccountScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         //profile image name and email and logout button
                         Row(
                           children: [
@@ -77,13 +80,13 @@ class AccountScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  "${data['name']}"
+                                  "${data["name"]}"
                                       .text
                                       .white
                                       .size(20)
                                       .fontFamily(bold)
                                       .make(),
-                                  "${data['email']}".text.white.make(),
+                                  "${data["email"]}".text.white.make(),
                                 ],
                               ),
                             ),
@@ -106,24 +109,24 @@ class AccountScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             detailsCard(
-                              count: "${data['cart_count']}",
+                              count: "${data["cart_count"]}",
                               title: mycart,
                               width: context.screenWidth / 3.4,
                             ),
                             detailsCard(
-                              count: "${data['wishlist_count']}",
+                              count: "${data["wislist_count"]}",
                               title: wishlist,
                               width: context.screenWidth / 3.4,
                             ),
                             detailsCard(
-                              count: "${data['order_count']}",
+                              count: "${data["order_count"]}",
                               title: myorder,
                               width: context.screenWidth / 3.4,
                             ),
                           ],
                         ),
                         27.heightBox,
-                        //button for mesages,orders,wishlist
+                        // button for mesages,orders,wishlist
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Material(
@@ -134,7 +137,35 @@ class AccountScreen extends StatelessWidget {
                                 shrinkWrap: true,
                                 itemBuilder: (BuildContext context, int index) {
                                   return InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      switch (index) {
+                                        case 0:
+                                          VxToast.show(context,
+                                              msg: "My Orders");
+                                          Get.to(() => const OrderScreen());
+                                          break;
+                                        case 1:
+                                          VxToast.show(context,
+                                              msg: "My Wishlist");
+                                          break;
+                                        case 2:
+                                          VxToast.show(context,
+                                              msg: "Messages");
+                                          break;
+                                        case 3:
+                                          VxToast.show(context,
+                                              msg: "Categories");
+                                          break;
+                                        case 4:
+                                          VxToast.show(context,
+                                              msg: "Addresses");
+                                          Get.to(() => const AddressDetails());
+
+                                          break;
+
+                                        default:
+                                      }
+                                    },
                                     child: ListTile(
                                       leading: Image.asset(
                                         profilebuttonicon.elementAt(index),

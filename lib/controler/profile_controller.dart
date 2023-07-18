@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:meat_deliviry_app/services/firestore_services.dart';
 import 'package:path/path.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 
@@ -31,26 +32,27 @@ class ProfileController extends GetxController {
 
   uploadProfileImage() async {
     var filename = basename(profileImagepath.value);
-    var destination = 'image/${currentUser!.uid}/$filename';
+    var destination = 'image/${currentuser!.uid}/$filename';
     Reference ref = FirebaseStorage.instance.ref(destination);
     await ref.putFile(File(profileImagepath.value));
     profileImageLink = await ref.getDownloadURL();
   }
 
   updateProfile({name, password, imageUrl}) async {
-    var store = firestore.collection(userCollection).doc(currentUser!.uid);
+    var store = firestore
+        .collection(userCollection)
+        .doc(FirestoreServices.getUserUid());
     store.set({'name': name, 'password': password, 'imageUrl': imageUrl},
         SetOptions(merge: true));
     isloading(false);
   }
 
-  changeAuthPassword({email,password,newPassword})async{
-    final cred=EmailAuthProvider.credential(email: email, password: password);
-    await currentUser!.reauthenticateWithCredential(cred).then((value) {
-      currentUser!.updatePassword(newPassword);
-    }).catchError((error){
-      print(error.toString());
-    });
-
+  changeAuthPassword({email, password, newPassword}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    var user = auth.currentUser;
+    final cred = EmailAuthProvider.credential(email: email, password: password);
+    await user!.reauthenticateWithCredential(cred).then((value) {
+      user.updatePassword(newPassword);
+    }).catchError((error) {});
   }
 }

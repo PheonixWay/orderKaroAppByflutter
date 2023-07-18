@@ -6,7 +6,7 @@ Widget ourButton({onPress, color, textcolor, String? data}) {
     onPressed: onPress,
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(8),
     ),
     child: data!.text.fontFamily(bold).color(textcolor).make(),
   );
