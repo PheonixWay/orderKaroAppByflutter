@@ -104,27 +104,66 @@ class AccountScreen extends StatelessWidget {
                           ],
                         ),
                         15.heightBox,
+                        FutureBuilder(
+                            future: FirestoreServices.getCount(
+                                FirestoreServices.getUserUid()),
+                            builder:
+                                (BuildContext context, AsyncSnapshot snapshot) {
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor:
+                                        AlwaysStoppedAnimation(redColor),
+                                  ),
+                                );
+                              } else {
+                                var countData = snapshot.data;
+
+                                return Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    detailsCard(
+                                      count: countData[0].toString(),
+                                      title: mycart,
+                                      width: context.screenWidth / 3.4,
+                                    ),
+                                    detailsCard(
+                                      count: "${data["wislist_count"]}",
+                                      title: wishlist,
+                                      width: context.screenWidth / 3.4,
+                                    ),
+                                    detailsCard(
+                                      count: countData[1].toString(),
+                                      title: myorder,
+                                      width: context.screenWidth / 3.4,
+                                    ),
+                                  ],
+                                );
+                              }
+                            }),
+
                         //my count details of cart,wishlist,orders
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            detailsCard(
-                              count: "${data["cart_count"]}",
-                              title: mycart,
-                              width: context.screenWidth / 3.4,
-                            ),
-                            detailsCard(
-                              count: "${data["wislist_count"]}",
-                              title: wishlist,
-                              width: context.screenWidth / 3.4,
-                            ),
-                            detailsCard(
-                              count: "${data["order_count"]}",
-                              title: myorder,
-                              width: context.screenWidth / 3.4,
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //   children: [
+                        //     detailsCard(
+                        //       count: "${data["cart_count"]}",
+                        //       title: mycart,
+                        //       width: context.screenWidth / 3.4,
+                        //     ),
+                        //     detailsCard(
+                        //       count: "${data["wislist_count"]}",
+                        //       title: wishlist,
+                        //       width: context.screenWidth / 3.4,
+                        //     ),
+                        //     detailsCard(
+                        //       count: "${data["order_count"]}",
+                        //       title: myorder,
+                        //       width: context.screenWidth / 3.4,
+                        //     ),
+                        //   ],
+                        // ),
                         27.heightBox,
                         // button for mesages,orders,wishlist
                         Padding(

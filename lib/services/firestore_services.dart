@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/src/widgets/async.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:get/get.dart';
 import 'package:meat_deliviry_app/consts/firebase_const.dart';
 import 'package:meat_deliviry_app/controler/home_controller.dart';
@@ -80,5 +78,33 @@ class FirestoreServices {
 
   static deleteAddress(id) {
     return firestore.collection(addressCollection).doc(id).delete();
+  }
+
+  static getCount(uid) async {
+    var res = await Future.wait([
+      firestore
+          .collection(cartCollection)
+          .where("addedby", isEqualTo: uid)
+          .get()
+          .then((value) {
+        return value.docs.length;
+      }),
+      firestore
+          .collection(orderCollection)
+          .where("order_by", isEqualTo: uid)
+          .get()
+          .then((value) {
+        return value.docs.length;
+      })
+      //this is for whislist fetching count
+      // firestore
+      //     .collection(cartCollection)
+      //     .where("order_by", isEqualTo: uid)
+      //     .get()
+      //     .then((value) {
+      //   return value.docs.length;
+      // }),
+    ]);
+    return res;
   }
 }

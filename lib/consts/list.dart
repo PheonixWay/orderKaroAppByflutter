@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:meat_deliviry_app/consts/consts.dart';
 
 const socialIconList = {icFacebookLogo, icGoogleLogo, icTwitterLogo};
