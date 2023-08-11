@@ -15,6 +15,7 @@ class CategoryDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProductController>();
+
     return bgWidget(
       child: Scaffold(
         appBar: AppBar(
@@ -36,37 +37,15 @@ class CategoryDetails extends StatelessWidget {
             } else {
               //geting data from snapshot in local variable
               var data = snapshot.data!.docs;
-              controller.initailizingListElement(length: data.length);
+
+              //find this issue
+              // controller.initailizingListElement(length: data.length);
 
               return Container(
                 padding: const EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      child: Row(
-                        //showing categories except selected one in details
-                        children: List.generate(
-                          controller.subCat.length,
-                          (index) => "${controller.subCat[index]}"
-                              .text
-                              .size(14)
-                              .fontFamily(semibold)
-                              .color(darkFontGrey)
-                              .makeCentered()
-                              .box
-                              .roundedSM
-                              .white
-                              .size(150, 50)
-                              .padding(
-                                  const EdgeInsets.symmetric(horizontal: 20))
-                              .margin(const EdgeInsets.symmetric(horizontal: 4))
-                              .make(),
-                        ),
-                      ),
-                    ),
                     20.heightBox,
                     Expanded(
                       child: GridView.builder(
@@ -79,7 +58,7 @@ class CategoryDetails extends StatelessWidget {
                             crossAxisCount: 2,
                             crossAxisSpacing: 2,
                             mainAxisSpacing: 2,
-                            mainAxisExtent: 300,
+                            mainAxisExtent: 340,
                           ),
                           itemBuilder: (context, index) {
                             return Column(
@@ -107,7 +86,6 @@ class CategoryDetails extends StatelessWidget {
                                     .fontFamily(regular)
                                     .color(fontGrey)
                                     .make(),
-                                5.heightBox,
                                 Row(
                                   children: [
                                     "₹ "
@@ -181,35 +159,6 @@ class CategoryDetails extends StatelessWidget {
                                         )),
                                   ],
                                 ),
-                                //This is a total amount teller
-                                // 5.heightBox,
-                                // "Totall Amount: "
-                                //     .text
-                                //     .color(darkFontGrey)
-                                //     .fontFamily(bold)
-                                //     .size(14)
-                                //     .make(),
-                                // 5.heightBox,
-                                // Row(
-                                //   children: [
-                                //     "₹ "
-                                //         .text
-                                //         .color(Vx.green500)
-                                //         .fontFamily(bold)
-                                //         .size(16)
-                                //         .make(),
-                                //     Obx(
-                                //       () => "${controller.totalPrice[index]}"
-                                //           .numCurrency
-                                //           .text
-                                //           .color(Vx.green500)
-                                //           .fontFamily(bold)
-                                //           .size(16)
-                                //           .make(),
-                                //     )
-                                //   ],
-                                // ),
-
                                 Expanded(
                                   child: ButtonBar(
                                     alignment: MainAxisAlignment.spaceBetween,

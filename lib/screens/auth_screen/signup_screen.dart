@@ -132,8 +132,6 @@ class _SignUpState extends State<SignUp> {
                                     } catch (e) {
                                       controller.isloading(false);
                                       controller.signoutMethod();
-
-                                      VxToast.show(context, msg: e.toString());
                                     }
                                   }
                                 },

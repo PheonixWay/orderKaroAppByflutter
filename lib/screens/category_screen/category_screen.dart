@@ -25,7 +25,7 @@ class CategoryScreen extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 5,
-              mainAxisExtent: 200,
+              mainAxisExtent: 180,
               mainAxisSpacing: 5),
           itemBuilder: (context, index) {
             return Column(
@@ -47,8 +47,6 @@ class CategoryScreen extends StatelessWidget {
               ],
             ).box.white.roundedSM.shadowSm.clip(Clip.antiAlias).make().onTap(
               () {
-                controller.getSubCategories(
-                    title: categoriesList.elementAt(index));
                 Get.to(
                   () => CategoryDetails(title: categoriesList.elementAt(index)),
                 );

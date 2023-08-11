@@ -111,4 +111,11 @@ class FirestoreServices {
   static getAllProducts() {
     return firestore.collection(productCollection).snapshots();
   }
+
+  static getTopChicken() {
+    return firestore
+        .collection(productCollection)
+        .where("p_category2", isEqualTo: "TopChicken")
+        .snapshots();
+  }
 }

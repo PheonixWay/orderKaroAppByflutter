@@ -15,9 +15,15 @@ class ProfileController extends GetxController {
   var isloading = false.obs;
   var profileImagepath = ''.obs;
   var profileImageLink = '';
+  var profileData;
   var nameController = TextEditingController();
-  var oldpassController = TextEditingController();
-  var newpassController = TextEditingController();
+  var nameForProfileC = TextEditingController();
+  var emailForProfileC = TextEditingController();
+
+  setProfileData() {
+    nameForProfileC.text = profileData["name"];
+    emailForProfileC.text = profileData["email"];
+  }
 
   changeImage(context) async {
     try {
@@ -38,12 +44,11 @@ class ProfileController extends GetxController {
     profileImageLink = await ref.getDownloadURL();
   }
 
-  updateProfile({name, password, imageUrl}) async {
+  updateProfile({name, imageUrl}) async {
     var store = firestore
         .collection(userCollection)
         .doc(FirestoreServices.getUserUid());
-    store.set({'name': name, 'password': password, 'imageUrl': imageUrl},
-        SetOptions(merge: true));
+    store.set({'name': name, 'imageUrl': imageUrl}, SetOptions(merge: true));
     isloading(false);
   }
 

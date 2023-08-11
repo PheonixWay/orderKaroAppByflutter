@@ -5,14 +5,18 @@ const icAppleLogo = "assets/icons/apple_logo.png";
 const icArrow = "assets/icons/arrow.png";
 const icBell = "assets/icons/bell.png";
 const icBlog = "assets/icons/blog.png";
-const icBrands = "assets/icons/brands.png";
+
 const icCompaigns = "assets/icons/compaigns.png";
 const icCart = "assets/icons/cart.png";
 const icCart2 = "assets/icons/cart1.png";
+
+//images for profile section
 const icAddress = "assets/icons/addIcon50.png";
+const icProfile1 = "assets/icons/profile1.png";
 const icCategories = "assets/icons/categories.png";
 const icCategories2 = "assets/icons/categories2.png";
 const icChangePassword = "assets/icons/changed_password.png";
+
 const icChat = "assets/icons/chat.png";
 const icClubpoint = "assets/icons/clubpoint.png";
 const icCoupon = "assets/icons/coupon.png";
@@ -38,20 +42,40 @@ const icPlaceholder = "assets/icons/placeholder.png";
 const icPlus = "assets/icons/plus.png";
 const icPoints = "assets/icons/points.png";
 const icProfile = "assets/icons/profile.png";
+
 const icRefund = "assets/icons/refund.png";
 const icSearch = "assets/icons/search.png";
 const icShop = "assets/icons/shop.png";
 const icSplashBg =
     "assets/icons/splash_login_registration_background_image.png";
 const icSquareLogo = "assets/icons/square_logo.png";
-const icTodaysDeal = "assets/icons/todays_deal.png";
-const icTopCategories = "assets/icons/top_categories.png";
-const icTopSeller = "assets/icons/top_sellers.png";
-const icTrash = "assets/icons/trash.png";
 const icTwitterLogo = "assets/icons/twitter_logo.png";
+
 const icWallet = "assets/icons/wallet.png";
 const icWhiteTick = "assets/icons/white_tick.png";
 const icWholeSale = "assets/icons/wholesale.png";
+
+//homescreen icons
+const icTodaysDeal = "assets/icons/todays_deal.png";
+const icBoiler = "assets/icons/parent.png";
+
+const icSecond = "assets/icons/chicken.png";
+const icSecond1 = "assets/icons/chicken1.png";
+const icPoultry = "assets/icons/second.png";
+const icEgg = "assets/icons/eggs.png";
+const icTopSeller = "assets/icons/top_sellers.png";
+const icTrash = "assets/icons/trash.png";
+
+//categories images
+const imgBoilerKahada = "assets/icons/boilerkhada1.jpg";
+const imgEggTray = "assets/icons/eggTray.png";
+const imgGaorani = "assets/images/secondGaorani.jpg";
+const imgpoultry = "assets/images/poultryNug.jpg";
+const imglegpiece2 = "assets/images/chickenleg.jpg";
+const imgparent = "assets/images/parentKhada.jpg";
+const imgmasala = "assets/images/chikenMasala.jpeg";
+const imgsecond = "assets/images/secondGaorani1.jpg";
+const imgKhada = "assets/images/poultryNug1.jpg";
 
 //images
 

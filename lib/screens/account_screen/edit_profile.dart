@@ -64,16 +64,7 @@ class EditProfile extends StatelessWidget {
                 hint: nameHint,
                 ispass: false,
                 controller: controller.nameController),
-            customTextField(
-                title: oldpass,
-                hint: passwordHint,
-                ispass: true,
-                controller: controller.oldpassController),
-            customTextField(
-                title: newpass,
-                hint: passwordHint,
-                ispass: true,
-                controller: controller.newpassController),
+
             15.heightBox,
             controller.isloading.value == true
                 ? const CircularProgressIndicator(
@@ -84,26 +75,25 @@ class EditProfile extends StatelessWidget {
                     color: redColor,
                     textcolor: whiteColor,
                     onPress: () async {
-                      controller.isloading(true);
-                      if (controller.profileImagepath.value.isNotEmpty) {
+                      if (controller.nameController.text.isEmpty) {
+                        // ignore: use_build_context_synchronously
+                        VxToast.show(context, msg: "Please Enter Name");
+                        //
+                      } else if (controller.profileImagepath.value.isNotEmpty) {
+                        controller.isloading.value = true;
                         await controller.uploadProfileImage();
                       } else {
                         controller.profileImageLink = data['imageUrl'];
                       }
-                      if (data['password'] ==
-                          controller.oldpassController.text) {
-                        // controller.changeAuthPassword(email: data['email'],password: controller.oldpassController.text,newPassword: controller.newpassController.text);
+                      if (controller.profileImageLink.isNotEmpty) {
                         await controller.updateProfile(
                             name: controller.nameController.text,
-                            password: controller.newpassController.text,
                             imageUrl: controller.profileImageLink);
+                        controller.isloading.value = false;
                         // ignore: use_build_context_synchronously
                         VxToast.show(context, msg: "Updated");
-                      } else {
-                        // ignore: use_build_context_synchronously
-                        VxToast.show(context, msg: oldPasswrong);
-                        controller.isloading(false);
                       }
+                      // controller.isloading(true);
                     }).box.width(context.screenWidth - 40).make(),
           ],
         )

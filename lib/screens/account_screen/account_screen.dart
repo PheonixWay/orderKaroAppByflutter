@@ -9,6 +9,7 @@ import 'package:meat_deliviry_app/design_widget/bg_widget_2.dart';
 import 'package:meat_deliviry_app/screens/Address_screen/address_screen.dart';
 import 'package:meat_deliviry_app/screens/account_screen/component_of_account_screen.dart';
 import 'package:meat_deliviry_app/screens/account_screen/edit_profile.dart';
+import 'package:meat_deliviry_app/screens/account_screen/my_profile.dart';
 import 'package:meat_deliviry_app/screens/auth_screen/login_screen.dart';
 
 import 'package:meat_deliviry_app/screens/order_screen/order_screen.dart';
@@ -36,6 +37,7 @@ class AccountScreen extends StatelessWidget {
                 );
               } else {
                 var data = snapshot.data!.docs[0];
+                controller.profileData = data;
 
                 return SafeArea(
                   child: Container(
@@ -126,44 +128,17 @@ class AccountScreen extends StatelessWidget {
                                     detailsCard(
                                       count: countData[0].toString(),
                                       title: mycart,
-                                      width: context.screenWidth / 3.4,
-                                    ),
-                                    detailsCard(
-                                      count: "${data["wislist_count"]}",
-                                      title: wishlist,
-                                      width: context.screenWidth / 3.4,
+                                      width: context.screenWidth / 2.5,
                                     ),
                                     detailsCard(
                                       count: countData[1].toString(),
                                       title: myorder,
-                                      width: context.screenWidth / 3.4,
+                                      width: context.screenWidth / 2.5,
                                     ),
                                   ],
                                 );
                               }
                             }),
-
-                        //my count details of cart,wishlist,orders
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        //   children: [
-                        //     detailsCard(
-                        //       count: "${data["cart_count"]}",
-                        //       title: mycart,
-                        //       width: context.screenWidth / 3.4,
-                        //     ),
-                        //     detailsCard(
-                        //       count: "${data["wislist_count"]}",
-                        //       title: wishlist,
-                        //       width: context.screenWidth / 3.4,
-                        //     ),
-                        //     detailsCard(
-                        //       count: "${data["order_count"]}",
-                        //       title: myorder,
-                        //       width: context.screenWidth / 3.4,
-                        //     ),
-                        //   ],
-                        // ),
                         27.heightBox,
                         // button for mesages,orders,wishlist
                         Padding(
@@ -180,26 +155,26 @@ class AccountScreen extends StatelessWidget {
                                       switch (index) {
                                         case 0:
                                           VxToast.show(context,
-                                              msg: "My Orders");
-                                          Get.to(() => const OrderScreen());
+                                              msg: "My Profile");
+                                          Get.to(const MyProfile());
                                           break;
+
                                         case 1:
-                                          VxToast.show(context,
-                                              msg: "My Wishlist");
-                                          break;
-                                        case 2:
-                                          VxToast.show(context,
-                                              msg: "Messages");
-                                          break;
-                                        case 3:
-                                          VxToast.show(context,
-                                              msg: "Categories");
-                                          break;
-                                        case 4:
                                           VxToast.show(context,
                                               msg: "Addresses");
                                           Get.to(() => const AddressDetails());
 
+                                          break;
+
+                                        case 2:
+                                          VxToast.show(context,
+                                              msg: "My Orders");
+                                          Get.to(() => const OrderScreen());
+                                          break;
+
+                                        case 3:
+                                          VxToast.show(context,
+                                              msg: "Need Help!");
                                           break;
 
                                         default:

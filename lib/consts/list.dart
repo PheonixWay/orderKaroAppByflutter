@@ -4,42 +4,54 @@ const socialIconList = {icFacebookLogo, icGoogleLogo, icTwitterLogo};
 const slidersList = {imgSlider1, imgSlider2, imgSlider3, imgSlider4};
 const slidersList2 = {imgSs1, imgSs2, imgSs3, imgSs4};
 
-const featuredImg1 = {imgS1, imgS2, imgS3};
-const featuredImg2 = {imgS4, imgS5, imgS6};
-
-const featuredTitles1 = {womenDress, girlDress, girlwatches};
-const featuredTitles2 = {boyGlasess, mobilePhone, tshirts};
-
 const categoriesList = {
-  womenDress,
-  menclothingandfashion,
-  compacces,
-  automobile,
-  kidtoy,
-  sport,
-  jwellery,
-  cellphone,
-  furniture
+  boiler,
+  second,
+  poultry,
+  gaorani,
+  parent,
+  egg,
+  chikenMasala,
+  special,
+  khadaChicken
+};
+const homeScreenCategorylist1 = {
+  boiler,
+  poultry,
+  parent,
+};
+const homeScreenCategorylist2 = {
+  second,
+  desi,
+  egg,
+};
+const homeScreenCategoryIcon1 = {
+  icBoiler,
+  icPoultry,
+  icSecond,
+};
+const homeScreenCategoryIcon2 = {
+  icSecond,
+  icSecond1,
+  icEgg,
 };
 const categoriesImages = {
-  imgFc1,
-  imgFc2,
-  imgFc3,
-  imgFc4,
-  imgFc5,
-  imgFc6,
-  imgFc7,
-  imgFc8,
-  imgFc9
+  imgBoilerKahada,
+  imgsecond,
+  imgpoultry,
+  imgGaorani,
+  imgparent,
+  imgEggTray,
+  imgmasala,
+  imglegpiece2,
+  imgKhada
 };
-const profilebuttonlist = {myorders, mywishlist, messages, categories, address};
+const profilebuttonlist = {myProfile, address, myorders, messages};
 
 const profilebuttonicon = {
-  icOrders,
-  icOrder,
+  icProfile1, icAddress, icOrders,
   icMessages,
-  icCategories2,
-  icAddress,
+
   // Icon(Icons.add_home),
 };
 const paymentModeimg = {imgUpi, imgCod1};

@@ -4,8 +4,7 @@ const credits = "@Danish Ansari";
 const emial = "Email";
 const emailHint = "admin@admin.com";
 const password = "Password";
-const newpass = "New Password";
-const oldpass = "Old Password";
+
 const oldPasswrong = "Old Password Wrong";
 const retypePass = "Retype Password";
 const name = "Name";
@@ -31,32 +30,29 @@ const cart = "Cart";
 const address = "Addresses";
 const account = "Account";
 
+//constant for home screen
 const searchanything = "Search anything...";
 const topChoice = "Top Choice";
 const budgetMeat = "Budget Meat";
-const topcategory = "Top Categories";
+const boiler = "Boiler";
 const allProduct = "All Products";
-const brands = "Brands";
-const topseller = "Top Seller's";
-const featuredcat = "Featured Categories";
-const featuredProduct = "Featured Product";
-const womenDress = "women Dress";
-const girlwatches = "Girl Watches";
-const mobilePhone = "Mobile Phone";
-const boyGlasess = "Boy Glasses";
+const parent = "Parent";
+const poultry = "Poultry";
+const second = "Second";
+const desi = "Desi";
+const egg = "Egg";
+const special = "Special Order";
+const topChiken = "Top Chicken";
+const khadaChicken = "Khada Chicken";
+
+//constatns for categories
+
+const gaorani = "Gaorani";
+const chikenMasala = "Chiken Masala";
 const tshirts = "TShirts";
 const girlDress = "Girls Dresses";
 
-const womenclothing = "Women Clothing";
-const menclothingandfashion = "Men Clothing & Fashion";
-const compacces = "Computer & Accessories";
-const automobile = "Automobile";
-const kidtoy = "Kid & Toys";
-const sport = "Sports";
-const jwellery = "Jewelery";
-const cellphone = "Cellphone & Tab";
-const furniture = "Furniture";
-
+//constats for profile
 const cartisEmpty = "Cart is Empty!";
 const addressisEmpty = "Address is Empty!";
 const profilename = "Katrina Kaif";
@@ -65,17 +61,17 @@ const cartcount = "00";
 const wishlistcount = "00";
 const ordercount = "00";
 const mycart = "Your Cart";
-const wishlist = "Your wishlist";
+
 const myorder = "Your orders";
 
-const mywishlist = "My Wishlist";
+const myProfile = "My Profile";
 const myorders = "My Orders";
-const messages = "Messages";
+const messages = "Need Help!";
 
 const change = "Change";
 const editprofile = "Editing Profile";
 const save = "Save";
 
-const upi = "(GPay,PhonePe,Paytm etc)";
+const upi = "GPay,PhonePe,Paytm";
 
 const cod1 = "Cash on Delivery";
